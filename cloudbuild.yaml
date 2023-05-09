@@ -1,5 +1,5 @@
 substitutions:
-  _DOCKER_COMPOSE_VERSION: 1.28.2
+  _DOCKER_COMPOSE_VERSION: 3.10.0
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args:
