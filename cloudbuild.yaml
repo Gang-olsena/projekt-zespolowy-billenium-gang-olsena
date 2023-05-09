@@ -1,5 +1,21 @@
+substitutions:
+  _DOCKER_COMPOSE_VERSION: 1.28.2
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/aqueous-cargo-386214/projekt-zespolowy-billenium-gang-olsena', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '-t', 'gcr.io/aqueous-cargo-386214/projekt-zespolowy-billenium-gang-olsena']
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--build-arg'
+  - 'DOCKER_COMPOSE_VERSION=${_DOCKER_COMPOSE_VERSION}'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/docker-compose:latest'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/docker-compose:${_DOCKER_COMPOSE_VERSION}'
+  - '.'
+- name: 'gcr.io/$PROJECT_ID/docker-compose'
+  args: ['version']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/docker-compose']
+
+images:
+- 'gcr.io/$PROJECT_ID/docker-compose:latest'
+- 'gcr.io/$PROJECT_ID/docker-compose:${_DOCKER_COMPOSE_VERSION}'
