@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/aqueous-cargo-386214/projekt-zespolowy-billenium-gang-olsena', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '-t', 'gcr.io/aqueous-cargo-386214/projekt-zespolowy-billenium-gang-olsena']
