@@ -57,29 +57,11 @@ class ApiService {
     }
 
     loginUser(username, password) {
-        return fetch(`/token/`, {
-            method : "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body   : JSON.stringify({
-                username,
-                password
-            })
-        })
+        return this.axios.post(`/token/`, {"username": username, "password": password}).then(response => response.data);
     }
 
     createUser(username, password, password2) {
-        return fetch(`/user/`, {
-            method : "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body   : JSON.stringify({
-                username,
-                password
-            })
-        });
+        return this.axios.post(`/user/`, {"username": username, "password": password, "password2": password2});
     }
 }
 
