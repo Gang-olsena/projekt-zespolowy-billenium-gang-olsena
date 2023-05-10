@@ -1,3 +1,5 @@
 steps:
 - name: 'docker/compose:1.29.2'
   args: ['up', '-d']
+- name: 'docker/compose:1.29.2'
+images: ['gcr.io/$PROJECT_ID/gcb-docker-compose:latest']
