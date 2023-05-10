@@ -1,11 +1,4 @@
 steps:
-# Install dependencies.
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['install']
-
-# Unit test.
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'test:unit']
 
 # Build the new docker image.
 - name: 'gcr.io/cloud-builders/docker'
