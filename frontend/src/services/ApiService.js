@@ -61,7 +61,7 @@ class ApiService {
     }
 
     createUser(username, password, password2) {
-        return this.axios.post(`/user/`, {"username": username, "password": password, "password2": password2});
+        return this.axios.post(`/user/`, {"username": username, "password": password, "password2": password2}).then(response => response.data);
     }
 }
 

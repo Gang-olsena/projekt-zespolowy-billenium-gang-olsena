@@ -19,10 +19,8 @@ export const AuthProvider = ({children}) => {
     const apiService = useUserService();
 
     const loginUser = async (username, password) => {
-        var response = await userService.loginUser(username, password);
-        console.log(response)
-        let response_data = await response.json();
-        if(response.status === 200) {
+        var response_data = await userService.loginUser(username, password);
+        if('access' in response_data) {
             setAuthToken(response_data);
             setUser(jwt_decode(response_data.access).user_data);
             localStorage.setItem("authToken", JSON.stringify(response_data));
