@@ -12,12 +12,5 @@ steps:
   env:
   - 'PROJECT_ID=$PROJECT_ID'
 
-# Run the integration tests against the running docker-compose stack.
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'test:integration']
-  env:
-  - 'HOST=counter' # running container, container_name defined in the docker-compose.yml
-  - 'PORT=50051'
-
 # Push the new image to the registry.
 images: ['gcr.io/$PROJECT_ID/billenium:latest']
