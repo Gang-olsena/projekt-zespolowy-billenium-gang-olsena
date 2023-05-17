@@ -85,7 +85,7 @@ DATABASES = {
         'NAME'    : 'kanban',
         'USER'    : 'postgres',
         'PASSWORD': 'postgres',
-        'HOST'    : '127.0.0.1',
+        'HOST': f'/cloudsql/{INSTANCE_CONNECTION_NAME}',
         'PORT'    : '5432',
     }
 }
