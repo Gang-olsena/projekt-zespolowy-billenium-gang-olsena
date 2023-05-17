@@ -8,7 +8,7 @@ import {createContext, useEffect} from 'react';
 
 
 // const baseURL = "http://127.0.0.1:8000/api";
-const baseURL = "http://34.118.122.21:8000/api";
+const baseURL = "https://billenium-b-cglx2hn74q-uc.a.run.app/api";
 
 // Local axios instance
 const axiosInstance = axios.create({
