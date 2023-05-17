@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+INSTANCE_CONNECTION_NAME = os.environ("INSTANCE_CONNECTION_NAME")
 DATABASES = {
     'default': {
         'ENGINE'  : 'django.db.backends.postgresql_psycopg2',
