@@ -22,7 +22,7 @@ from google.cloud import secretmanager
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(DEBUG=(bool, True))
-env_file = os.path.join(BASE_DIR, ".env")
+env_file = os.path.join(BASE_DIR, ".env.local")
 
 # Attempt to load the Project ID into the environment, safely failing on error.
 try:
