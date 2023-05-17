@@ -85,7 +85,7 @@ DATABASES = {
         'NAME'    : 'kanban',
         'USER'    : 'postgres',
         'PASSWORD': 'postgres',
-        'HOST'    : '34.118.94.89',
+        'HOST'    : '127.0.0.1',
         'PORT'    : '5432',
     }
 }
