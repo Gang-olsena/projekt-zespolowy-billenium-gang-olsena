@@ -14,7 +14,8 @@ RUN apk add --virtual .build-deps --no-cache postgresql-dev gcc python3-dev musl
 
 COPY . /app/backend/
 
-CMD python manage.py migrate auth && \
+CMD python manage.py migrate user && \
+    python manage.py migrate auth && \
     python manage.py migrate kanban && \
     python manage.py migrate && \
     python manage.py runserver 0.0.0.0:8000
