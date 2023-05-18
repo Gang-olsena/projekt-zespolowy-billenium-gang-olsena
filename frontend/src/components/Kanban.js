@@ -29,6 +29,7 @@ import { SplitButton } from 'primereact/splitbutton';
 import { Menu } from 'primereact/menu';
 import { Chart } from 'primereact/chart';
 import row from "./Row";
+import StatChart from "./StatChart";
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
@@ -509,8 +510,7 @@ function dragCancel(){
                         reject={rejectAddRow}
                     />
                     <Dialog header={t("kanbanStatistics")} visible={visible4}  /*footer={renderFooter('displayBasic')}*/ onHide={() => setVisible4(false)}>
-                        <EditUserMenu>
-                        </EditUserMenu>
+                        <StatChart/>
                     </Dialog>
                     <Dialog header={t("kanbanChangeUserDataDialog")} visible={visible3}  /*footer={renderFooter('displayBasic')}*/ onHide={() => setVisible3(false)}>
                         <EditUserMenu>
