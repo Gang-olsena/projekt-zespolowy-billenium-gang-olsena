@@ -27,6 +27,7 @@ import i18n from "i18next";
 import Loading from "./Loading";
 import { SplitButton } from 'primereact/splitbutton';
 import { Menu } from 'primereact/menu';
+import { Chart } from 'primereact/chart';
 import row from "./Row";
 const GlobalStyle = createGlobalStyle`
   body {
