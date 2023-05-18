@@ -245,6 +245,11 @@ function Kanban() {
                     label: t("kanbanButtonNewRow"),
                     icon: 'pi pi-plus',
                     command:() => CommonService.onOpenDialog(setVisible1, [{callback: setValue1, value: ''}])
+                },
+                {
+                    label: t("kanbanStatistics"),
+                    icon: 'pi pi-plus',
+                    command:() => CommonService.onOpenDialog(setVisible4, [{callback: setValue4, value: ''}])
                 }
             ]
         }
@@ -502,6 +507,10 @@ function dragCancel(){
                         accept={acceptAddRow}
                         reject={rejectAddRow}
                     />
+                    <Dialog header={t("kanbanStatistics")} visible={visible4}  /*footer={renderFooter('displayBasic')}*/ onHide={() => setVisible4(false)}>
+                        <EditUserMenu>
+                        </EditUserMenu>
+                    </Dialog>
                     <Dialog header={t("kanbanChangeUserDataDialog")} visible={visible3}  /*footer={renderFooter('displayBasic')}*/ onHide={() => setVisible3(false)}>
                         <EditUserMenu>
                             <EditUserText>

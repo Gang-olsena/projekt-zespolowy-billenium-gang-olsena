@@ -85,6 +85,7 @@
   "kanbanMoveCardNotFinished": "Czy na pewno chcesz zakończyć zadanie, które nie jest skompletowane?",
   "kanbanMoveCardWithBug": "Czy na pewno chcesz zakończyć zadanie z 'bugiem'?",
   "kanbanMoveCardNotFinishedBug":"Czy na pewno chcesz zakończyć zadanie, które nie jest skompletowane i ma buga?",
+  "kanbanStatistics": "Statystyki",
 
   "Board.js":"SECTION",
   "BoardNewCard": "Wpisz nazwę zadania:",
