@@ -88,6 +88,12 @@ user_board_viewset = CardViewSet.as_view(
     )
 )
 
+chart_viewset = CardViewSet.as_view(
+    dict(
+        get='get_card_chart_data'
+    )
+)
+
 urlpatterns = [
     # board
     path('board/', board_viewset),
@@ -107,6 +113,8 @@ urlpatterns = [
     path('row/<int:pk>/', single_row_viewset),
     path('row/', row_viewset),
     path('limit/', parameter_limit_viewset),
-    path('parameter/<int:pk>/', parameter_viewset),
 
+    # other
+    path('parameter/<int:pk>/', parameter_viewset),
+    path('chart/', chart_viewset),
 ]

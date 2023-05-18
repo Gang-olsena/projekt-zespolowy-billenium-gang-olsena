@@ -85,6 +85,7 @@
   "kanbanMoveCardNotFinished":  "Are you sure you want to finish an incomplete task",
   "kanbanMoveCardWithBug":"Are you sure you want to finish a task with a bug?",
   "kanbanMoveCardNotFinishedBug":"Are you sure you want to finish an incomplete task with a bug?",
+  "kanbanStatistics": "Statistics",
 
   "Board.js":"SECTION",
   "BoardNewCard": "Enter task name:",

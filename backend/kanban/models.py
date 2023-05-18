@@ -112,15 +112,15 @@ class Card(Timestamp):
     is_locked = models.BooleanField(default=False)
     is_card_completed = models.BooleanField(default=False)
     is_card_finished = models.BooleanField(default=False)
-    are_children_collapsed=models.BooleanField(default=True)
-    are_carditems_collapsed=models.BooleanField(default=True)
+    are_children_collapsed = models.BooleanField(default=True)
+    are_carditems_collapsed = models.BooleanField(default=True)
     has_bug = models.BooleanField(default=False)
-    #Twoje rozwiązanie mi nie działało poprawnie napisalem na szybko swoje
+    # Twoje rozwiązanie mi nie działało poprawnie napisalem na szybko swoje
     are_children_collapsed = models.BooleanField(default=True)
 
-    def save(self,*args, **kwargs):
+    def save(self, *args, **kwargs):
         items = CardItem.objects.filter(card_id=self.id)
-        print(items )
+        print(items)
         if items:
             all_completed = not items.filter(is_done=False).exists()
             self.is_card_completed = all_completed
@@ -163,7 +163,7 @@ class Card(Timestamp):
         'kanban.Board',
         related_name='card_board_restricted',
         blank=True,
-        null = False,
+        null=False,
 
     )
 
@@ -296,8 +296,9 @@ class UserManager(CoreModelManager, BaseUserManager):
 
 
 class User(Timestamp, AbstractUser):
-    #avatar = models.CharField(default="http://localhost:8000/media/generic-avatar.png", max_length=200)
-    avatar = models.CharField(default="https://billenium-b-cglx2hn74q-uc.a.run.app/media/generic-avatar.png", max_length=200)
+    # avatar = models.CharField(default="http://localhost:8000/media/generic-avatar.png", max_length=200)
+    avatar = models.CharField(default="https://billenium-b-cglx2hn74q-uc.a.run.app/media/generic-avatar.png",
+                              max_length=200)
     image = models.ImageField(default=None, blank=True, null=True)
     objects = UserManager()
 
@@ -319,6 +320,7 @@ class CardItem(Dictionary, Timestamp):
     is_done = models.BooleanField(default=False)
 
     objects = CoreModelManager()
+
 
 class CardMoveTimeline(Timestamp):
     card = models.ForeignKey(

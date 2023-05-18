@@ -2,7 +2,9 @@ class ApiService {
     constructor(axios = undefined) {
         this.axios = axios;
     }
-
+    getChart() {
+        return this.axios.get(`/chart/`).then(response => response.data);
+    }
     getBoards() {
         return this.axios.get(`/board/`).then(response => response.data);
     }

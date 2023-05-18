@@ -27,7 +27,9 @@ import i18n from "i18next";
 import Loading from "./Loading";
 import { SplitButton } from 'primereact/splitbutton';
 import { Menu } from 'primereact/menu';
+import { Chart } from 'primereact/chart';
 import row from "./Row";
+import StatChart from "./StatChart";
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
@@ -245,6 +247,11 @@ function Kanban() {
                     label: t("kanbanButtonNewRow"),
                     icon: 'pi pi-plus',
                     command:() => CommonService.onOpenDialog(setVisible1, [{callback: setValue1, value: ''}])
+                },
+                {
+                    label: t("kanbanStatistics"),
+                    icon: 'pi pi-chart-line',
+                    command:() => CommonService.onOpenDialog(setVisible4, [{callback: setValue4, value: ''}])
                 }
             ]
         }
@@ -502,6 +509,9 @@ function dragCancel(){
                         accept={acceptAddRow}
                         reject={rejectAddRow}
                     />
+                    <Dialog header={t("kanbanStatistics")} visible={visible4}  /*footer={renderFooter('displayBasic')}*/ onHide={() => setVisible4(false)}>
+                        <StatChart/>
+                    </Dialog>
                     <Dialog header={t("kanbanChangeUserDataDialog")} visible={visible3}  /*footer={renderFooter('displayBasic')}*/ onHide={() => setVisible3(false)}>
                         <EditUserMenu>
                             <EditUserText>

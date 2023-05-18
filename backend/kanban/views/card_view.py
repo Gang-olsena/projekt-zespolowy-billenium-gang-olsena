@@ -2,10 +2,12 @@ import datetime
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from kanban.models import Board, Card, CardItem
+from kanban.models import Board, Card, CardItem,CardMoveTimeline
 from kanban.serializers.board_serializer import BoardSerializer
 from kanban.views.helper import remaining_helper
 from kanban.serializers.card_serializer import CardSerializer, CardItemSerializer
+from kanban.serializers.card_timeline_serializer import TimelineSerializer
+from kanban.serializers.timeline_helper import timeline_helper
 
 
 class CardViewSet(viewsets.ViewSet):
@@ -17,16 +19,28 @@ class CardViewSet(viewsets.ViewSet):
         return Response(
             dict(
                 success=True,
-                data=CardSerializer(card).data
+                data=CardSerializer(card).data,
+            )
+        )
+
+    def get_card_chart_data(self, request):
+        charts = CardMoveTimeline.objects.all()
+        print(charts)
+        return Response(
+            dict(
+                success=True,
+                data1=TimelineSerializer(charts, many=True).data,
+                data=timeline_helper()
             )
         )
 
     def move_card(self, request, pk):
         card = Card.objects.get_by_pk(pk=pk)
-        restricted_boards=list(Card.objects.filter(id=pk).values_list('restricted_boards',flat=True))
+        restricted_boards = list(Card.objects.filter(id=pk).values_list('restricted_boards', flat=True))
         board_new = request.data.get('board')
         board_old = card.board.id
-        if (Card.objects.filter(parent_card_id=pk, is_card_finished=False).exists()) and Board.objects.get_by_pk(pk=board_new) ==Board.objects.all().order_by('-index').first():
+        if (Card.objects.filter(parent_card_id=pk, is_card_finished=False).exists()) and Board.objects.get_by_pk(
+                pk=board_new) == Board.objects.all().order_by('-index').first():
             return Response(
                 dict(
                     success=False,
@@ -90,8 +104,8 @@ class CardViewSet(viewsets.ViewSet):
                 message="apiCardUpdated",
                 data=BoardSerializer(Board.objects.all(), many=True).data,
                 data1=remaining_helper(),
-                data2 = CardSerializer(Card.objects.all(), many=True).data
-        )
+                data2=CardSerializer(Card.objects.all(), many=True).data
+            )
         )
 
     def delete_card(self, request, pk):
@@ -149,7 +163,6 @@ class CardViewSet(viewsets.ViewSet):
         card_item = CardItem.objects.get_by_pk(pk=pk, raise_exception=True)
         card_item.deleted_at = datetime.datetime.now()
         card_item.save()
-
 
         return Response(
             dict(
