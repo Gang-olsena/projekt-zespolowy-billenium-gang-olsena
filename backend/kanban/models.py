@@ -296,7 +296,8 @@ class UserManager(CoreModelManager, BaseUserManager):
 
 
 class User(Timestamp, AbstractUser):
-    avatar = models.CharField(default="http://localhost:8000/media/generic-avatar.png", max_length=200)
+    #avatar = models.CharField(default="http://localhost:8000/media/generic-avatar.png", max_length=200)
+    avatar = models.CharField(default="https://billenium-b-cglx2hn74q-uc.a.run.app/media/generic-avatar.png", max_length=200)
     image = models.ImageField(default=None, blank=True, null=True)
     objects = UserManager()
 
