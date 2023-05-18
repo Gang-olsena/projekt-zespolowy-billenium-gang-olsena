@@ -248,7 +248,7 @@ function Kanban() {
                 },
                 {
                     label: t("kanbanStatistics"),
-                    icon: 'pi pi-plus',
+                    icon: 'pi pi-chart-line',
                     command:() => CommonService.onOpenDialog(setVisible4, [{callback: setValue4, value: ''}])
                 }
             ]
