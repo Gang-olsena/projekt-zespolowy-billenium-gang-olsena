@@ -144,6 +144,7 @@ function Board(props) {
     }
     let items = [
         {
+            label: t("options"),
             items: [
                 {
                     label: t("BoardAddTask"),

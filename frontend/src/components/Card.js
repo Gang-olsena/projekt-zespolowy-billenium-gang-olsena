@@ -47,7 +47,7 @@ const CardItemsCard = styled.div`
   transition: all 0.2s;
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 10px;
+  //margin-left: 10px;
   margin-right: auto;
   color: #595959;
 `;
@@ -58,7 +58,7 @@ const CardChildren = styled.div`
   transition: all 0.2s;
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 10px;
+  //margin-left: 10px;
   margin-right: auto;
   color: #595959;
 `;
@@ -77,7 +77,7 @@ const CardStyle = styled.div`
     border: 2px solid #595959;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 10px;
+    //margin-left: 10px;
     margin-right: auto;
     color: #595959;
   }
@@ -86,20 +86,20 @@ const CardStyle = styled.div`
     border: 2px solid #595959;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 10px;
+    //margin-left: 10px;
     margin-right: auto;
     color: #595959;
   }
   font-size: 10px;
-  max-width: 240px;
-  min-width: 240px;
+  //max-width: 240px;
+  //min-width: 240px;
   border: ${props => props.locked ? "2px solid #b7b3ea" : "2px solid #b7b3ea"};
   border-radius: 2px;
-  padding: 2px;
+  //padding: 2px;
   margin-top: 5px;
   position: relative;
-  margin-left: 1px;
-  margin-right: 4px;
+  //margin-left: 1px;
+  //margin-right: 4px;
   -webkit-filter: ${props => props.locked ? "grayscale(0.7)" : ""};
   //Ta metoda to druciarstwo o wiele lepiej jest tuaj https://stackoverflow.com/questions/61635321/props-conditional-rendering-using-styled-components
   background-color: ${props => props.color};
@@ -195,9 +195,9 @@ const Description = styled.div`
   min-width: 126px;
   word-wrap: break-word;
   flex-wrap: wrap;
-  margin-top: 4px;
-  padding-left: 5px;
-  padding-right:5px;
+  //padding-top: 10px;
+  //padding-left: 5px;
+  //padding-right:5px;
 `;
 const UserChoiceBar = styled.div`
   margin-top: -9px;
@@ -242,10 +242,10 @@ const ProgressAndButtons = styled.div`
     margin-top: auto;
     display: flex;
     justify-content: space-between;
-    align-content: center;
-    align-items: center;
+    //align-content: center;
+    //align-items: center;
     flex-direction: row;
-    margin-bottom: 6px;
+    //margin-bottom: 6px;
   
 `;
 const EditMenu = styled.div`
@@ -269,7 +269,7 @@ const EditMenuText = styled.div`
       overflow: scroll;
 `;
 const DroppableDiv = styled.div`
-  width: inherit;
+  //width: inherit;
   display: flex;
   flex-direction: column;
 `;
@@ -314,6 +314,8 @@ function Card(props) {
     const [visible, setVisible] = useState(false);
     const [value, setValue] = useState(props.description);
     const [value1, setValue1] = useState(props.color);
+    const menu = useRef(null);
+
     const [lock, setLock] = useState(props.locked);
     const options = [
         {value: '#FFFFFF', style: {backgroundColor: `#FFFFFF`}},
@@ -334,7 +336,7 @@ function Card(props) {
     const [cardItems, setCardItems] = useState(props.data?.item_data);
     const editMenu = useRef(null);
     React.useEffect(() => {
-        const items = props.itemDataNew;
+        let items = props.itemDataNew;
         if(items) {
             setCardItems(items);
         }
@@ -423,7 +425,7 @@ function Card(props) {
     }
     const items = [
         {
-            label: 'Options',
+            label: t("options"),
             items: [
                 {
                     label: t("cardMenuButtonOptionEdit"),
@@ -512,13 +514,9 @@ function Card(props) {
                         type="avatar">
                         {(provided) => (
                             <DroppableDiv
+                                className="p-2"
                                 {...provided.droppableId}
                                 ref={provided.innerRef}>
-                                    <OnHoverButton>
-                                        <Button icon="pi pi-pencil"
-                                                style={{scale:"70%"}}
-                                                onClick={() => setVisible1(true)}/>
-                                    </OnHoverButton>
                                     <Tooltip target={`.cardItems-${props.backId}`} autoHide={false}>
                                         {(cardItems.length > 0) && (
                                             <div>
@@ -620,7 +618,9 @@ function Card(props) {
                                             />
                                         }
                                     </TagContainer>
-                                    <Description
+                                <div className="flex flex-wrap justify-content-between align-items-center">
+
+                                <Description
                                         className='tasks-container'>
                                         <ContentEditable
                                             spellCheck="false"
@@ -630,6 +630,11 @@ function Card(props) {
                                             style={{fontSize:13, font:"Verdana", padding:"4px",fontWeight:1000, color:"#3e4349"}}
                                             onBlur={handleInputChange}/>
                                     </Description>
+                                <Menu model={items} popup ref={menu} />
+                                    <Button size="sm"
+                                            text rounded
+                                            icon="pi pi-bars" onClick={(event) => menu.current.toggle(event)}/>
+                                    </div>
 
                                     <ButtonsChildrenItems>
                                         {(props.data.item_data.length > 0) &&

@@ -14,13 +14,13 @@ import LanguageChoose from "./LanguageChoose";
 import {Tooltip} from 'primereact/tooltip';
 
 const CardsStyle = styled.div`
-  max-width: 257px;
-  min-width: 257px;
+  //max-width: 257px;
+  //min-width: 257px;
   margin-top: 8px;
   margin-bottom: 8px;
-  margin-right: auto;
-  margin-left: 17px;
-  width: auto;
+  //margin-right: auto;
+  //margin-left: auto;
+  width: 90%;
   height: min-content+23px;
   min-height: 100px;
   overflow: auto;
