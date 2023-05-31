@@ -801,7 +801,6 @@ function Card(props) {
                                                            icon="pi pi-trash"
                                                            acceptLabel={t("yes")}
                                                            rejectLabel={t("no")}
-                                                           style={{scale: "0.6"}}
 
                                                            accept={accept}
                                                            reject={reject}/>
