@@ -97,7 +97,14 @@ class ApiService {
     }
 
     createUser(username, password, password2) {
-        return this.axios.post(`/user/`, {"username": username, "password": password, "password2": password2}).then(response => response.data);
+        return this.axios.post(`/user/`, {"username": username, "password": password, "password2": password2}).then(response => response.data).catch((error) => {
+            window.PrimeToast.show({
+                severity: 'error',
+                summary: 'Błąd',
+                detail: Object.values(error.response.data)[0],
+                life: 3000
+            });
+        });
     }
 }
 

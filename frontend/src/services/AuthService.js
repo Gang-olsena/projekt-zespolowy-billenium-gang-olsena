@@ -44,7 +44,7 @@ export const AuthProvider = ({children}) => {
 
     const registerUser = async (username, password, password2) => {
         const response_data = await apiService.createUser(username, password);
-        if(response_data.status === 200) {
+        if(response_data.success) {
             window.PrimeToast.show({
                 severity: 'success',
                 summary: 'Sukces',
@@ -52,8 +52,7 @@ export const AuthProvider = ({children}) => {
                 life: 3000
             });
             navigate("/");
-        }
-        if(response_data.status === 400) {
+        } else {
             window.PrimeToast.show({
                 severity: 'error',
                 summary: 'Błąd',
