@@ -307,6 +307,7 @@ function Kanban() {
                     }
                 }
                 if (hightest>400) hightest=400;
+                if (hightest==0) hightest=78;
                 heightDict[boards[0].row_data[i].id] = hightest+23
                 hightest = 0;
             }
