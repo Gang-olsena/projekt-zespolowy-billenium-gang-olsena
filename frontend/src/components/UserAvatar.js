@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {Draggable} from "react-beautiful-dnd";
 import 'primeicons/primeicons.css';
 import {Tooltip} from 'primereact/tooltip';
-
+import { Badge } from 'primereact/badge';
 
 const AvatarContainer = styled.div`
   flex-direction: column;
@@ -43,7 +43,9 @@ function UserAvatar(props) {
                                 style={getStyle(provided.draggableProps.style, snapshot)}
                 >
                     <Tooltip target=".user-avatar"/>
-                    <AvatarImage className="user-avatar" src={props.img} data-pr-tooltip={props.username} />
+                    <AvatarImage className="user-avatar" src={props.img} data-pr-tooltip={props.username}
+
+                        />
                 <div>
 
 

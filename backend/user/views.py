@@ -61,8 +61,8 @@ class UserViewSet(viewsets.ViewSet):
             plik=request.FILES['avatar']
             fs = FileSystemStorage()
             filename = fs.save(plik.name, plik)
-            #link="http://127.0.0.1:8000"
-            link="https://billenium-b-cglx2hn74q-uc.a.run.app"
+            link="http://127.0.0.1:8000"
+            #link="https://billenium-b-cglx2hn74q-uc.a.run.app"
             uploaded_file_url = fs.url(filename)
             link+=uploaded_file_url
             User.objects.filter(pk=pk).update(avatar=link)

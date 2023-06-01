@@ -127,5 +127,11 @@
   "cardMenuButtonOptionEdit": "Edit",
   "cardMenuButtonOptionDelete": "Delete",
   "cardMenuButtonOptionLock": "Change lock state",
-  "cardMenuButtonOptionBug": "Change bug state"
+  "cardMenuButtonOptionBug": "Change bug state",
+  "cardClearParent": "Remove parent",
+  "cardColorWhite": "white color",
+  "cardColorLime": "lime color",
+  "cardColorBlue": "blue color",
+  "cardColorYellow": "yellow color",
+  "cardColorPink": "pink color"
 }

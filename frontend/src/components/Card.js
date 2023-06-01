@@ -200,7 +200,6 @@ const Description = styled.div`
   //padding-right:5px;
 `;
 const UserChoiceBar = styled.div`
-  margin-top: -9px;
   display: flex;
   flex-direction: row;
   word-wrap: break-word;
@@ -230,12 +229,13 @@ const InsideProgressDiv = styled.div`
   margin-top: 5px;
 `;
 const Avatars = styled.div`
-  height: 26px;
+  height: 48px;
   width: 117px;
   display: inline-flex;
   flex-direction: row-reverse;
   overflow: auto;
   margin-right: 5px;
+  margin-bottom: 5px;
 
 `;
 const ProgressAndButtons = styled.div`
@@ -324,6 +324,13 @@ function Card(props) {
         {value: '#f5ebca', style: {backgroundColor: `#f5ebca`}},
         {value: '#efdcfa', style: {backgroundColor: `#efdcfa`}},
     ];
+    const options2 = {
+        '#FFFFFF': t('cardColorWhite'),
+        '#cdf8bc': t('cardColorLime'),
+        '#ccd8f5': t('cardColorBlue'),
+        '#f5ebca': t('cardColorYellow'),
+        '#efdcfa': t('cardColorPink'),
+    };
     const options1 = [
         {value: false, icon: 'pi pi-lock-open'},
         {value: true, icon: 'pi pi-lock'},
@@ -434,12 +441,6 @@ function Card(props) {
                     }
                 },
                 {
-                    label: t("cardMenuButtonOptionDelete"),
-                    icon: 'pi pi-times',
-                    command: () => {setVisible(true)
-                    }
-                },
-                {
                     label: t("cardMenuButtonOptionLock"),
                     icon: 'pi pi-unlock',
                     command:
@@ -452,6 +453,12 @@ function Card(props) {
                     icon: 'pi pi-wrench',
                     command: () => {
                         handleBugCheck()}
+                },
+                {
+                    label: t("cardMenuButtonOptionDelete"),
+                    icon: 'pi pi-times',
+                    command: () => {setVisible(true)
+                    }
                 }
             ]
         }
@@ -656,63 +663,39 @@ function Card(props) {
                                             footer={footerContent}
                                             blockScroll="true"
                                     >
-                                        <div>
-                                        </div>
                                         <EditMenuText>
                                             <InputTextarea className="w-full" value={value} onChange={(e) => setValue(e.target.value)}
                                                            rows={1}
                                                            cols={30}/>
                                         </EditMenuText>
-                                        <div className="flex">
+                                        <div className="flex mt-3">
                                             <Button
+                                                className="flex "
                                                 onClick={() => setParent(null)}
-                                                icon="pi pi-times"
-                                                rounded
-                                                text
+                                                icon="pi pi-trash"
                                                 size="sm"
+                                                label={t("cardClearParent")}
                                                 severity="danger"
+                                                style={{height: '7vh'}}
                                                 aria-label="Cancel"/>
-                                            <UserChoiceBar className="w-6">
-                                                <Dropdown className="mt-3 w-full" value={parent}
+                                            <UserChoiceBar className="ml-4 w-full">
+                                                <Dropdown className=" w-full" value={parent}
                                                           onChange={(e) => setParent(e.value)} options={(props.cardsChoice)}
                                                           optionLabel="description"
                                                           optionValue="id"
+                                                          style={{height: '7vh'}}
                                                           placeholder={t("cardEditDialogChooseParent")}
                                                 />
                                             </UserChoiceBar>
                                         </div>
-                                        <div className="card flex flex-row align-items-center gap-3 pt-3 pb-3 pl-2">
-                                            <div className="w-6">
+                                        <div className="card flex flex-row justify-content-center align-items-center gap-3 pt-3 pb-3 mt-4">
+                                            <div className="">
                                                 <MultiStateCheckbox value={value1} onChange={(e) => setValue1(e.value)} options={options}
                                                                     optionValue="value" empty={false}
 
                                                 />
-                                                <span className="pl-3">{value1}</span>
+                                                <span className="pl-3">{options2[value1]}</span>
                                             </div>
-                                            <ToggleButton
-                                                className="w-6"
-                                                onLabel={t("cardLocked")}
-                                                offLabel={t("cardUnlocked")}
-                                                onIcon="pi pi-lock"
-                                                offIcon="pi pi-lock-open"
-                                                checked={lock}
-                                                onChange={(e) => handleLock(e.value)}
-                                            />
-                                            <Button icon="pi pi-trash"
-                                                    style={{width:"70px"}}
-                                                    onClick={() => setVisible(true)}/>
-                                            <ToggleButton
-                                                onLabel="Bug"
-                                                offLabel=" "
-                                                value={props.hasBug}
-                                                onChange={(e) => {handleBugCheck()}}
-                                                checked={props.hasBug}
-                                                onIcon="pi pi-wrench"
-                                                offIcon="pi pi-wrench"
-                                                disabled={props.isCardDone}
-                                                style={{width:"120px"}}
-
-                                            />
                                             {/*(props.cardsChoice.find(o => o.id === props.backId).restricted_boards)*/}
                                         </div>
                                         <div className="mt-3 flex justify-content-between align-items-center flex-wrap">
@@ -729,7 +712,7 @@ function Card(props) {
                                                 }}/>
                                         </div>
                                         {(cardItems.length > 0) ? (
-                                            <div>
+                                            <div className="mt-3">
                                                 {cardItems.map((card_item, index) => {
                                                     return (
                                                         <div key={card_item.id} className="flex align-items-center mt-3">
@@ -783,6 +766,7 @@ function Card(props) {
                                                 </div>
                                             </EditCardChildren>
                                         }
+
                                     </Dialog>
                                     <ProgressAndButtons>
                                         <ButtonContainer>

@@ -127,7 +127,13 @@
   "cardMenuButtonOptionEdit": "Edytuj",
   "cardMenuButtonOptionDelete": "Usuń",
   "cardMenuButtonOptionLock": "Zmień stan zablokowania",
-  "cardMenuButtonOptionBug": "Zmień stan 'bug'"
+  "cardMenuButtonOptionBug": "Zmień stan 'bug'",
+  "cardClearParent": "Usuń rodzica",
+  "cardColorWhite": "kolor biały",
+  "cardColorLime": "kolor limonkowy",
+  "cardColorBlue": "kolor niebieski",
+  "cardColorYellow": "kolor żółty",
+  "cardColorPink": "kolor różowy"
 }
 
 
